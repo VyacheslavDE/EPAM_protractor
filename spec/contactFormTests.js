@@ -24,7 +24,7 @@ describe('EPAM "Contac us" form demo test', function(){
                     var EC = protractor.ExpectedConditions;
 
                     try{
-                        await sleep(2000);
+                        await sleep(3000);
                         const contactUsButton = await element(by.xpath("//a[@class = 'cta-button-ui cta-button--envelope header__control']"));
                         await contactUsButton.click();
                         

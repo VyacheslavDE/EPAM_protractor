@@ -1,0 +1,24 @@
+{
+  "name": "protractor-epam",
+  "version": "1.0.0",
+  "description": "protractor framework for EPAM website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KaterynaKandziuba/EPAM_protractor.git"
+  },
+
+  "keywords": [
+    "protractor"
+  ],
+  "author": "Kateryna Kandziuba <kateryna_kandziuba@epam.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jasmine-spec-reporter": "4.2.1",
+    "protractor-flake": "4.0.0"
+  }
+}

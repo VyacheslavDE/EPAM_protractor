@@ -12,7 +12,7 @@ exports.config = {
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.
-  specs: ['../tests/formPage.js'],
+  specs: ['C:/Users/1/Desktop/EPAM_JS/Kandziuba_EPAM_ProractorFramework/spec/contactFormTests.js'],
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {

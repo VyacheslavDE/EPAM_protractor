@@ -1,6 +1,6 @@
 describe('EPAM website demo test', function(){
 
-it('Check the correct order of the elements on "Investors" page', function(){
+it('1.	To check the correct order of the button list on the investors page', function(){
     
     browser.waitForAngularEnabled(false);
     browser.driver.manage().window().maximize();
@@ -25,9 +25,18 @@ it('Check the correct order of the elements on "Investors" page', function(){
                 console.error('Error: ', e);
             }
         }
+    })
 
-        checkElementsOnInvestorsPage();
+    
+it('2.	To check the button of the Stock Price', function(){
+    
+    browser.waitForAngularEnabled(false);
+    browser.driver.manage().window().maximize();
+    browser.get('https://www.epam.com/');
 
+    const sleep = ms => {
+         return new Promise(resolve => {setTimeout(() => resolve(), ms)})
+    }
         async function checkNewsOnInvestorsPage(){
             
             var EC = protractor.ExpectedConditions;
@@ -39,60 +48,107 @@ it('Check the correct order of the elements on "Investors" page', function(){
                 expect( await browser.getCurrentUrl() === 'https://investors.epam.com/investors');
                 await browser.wait(EC.presenceOf(
                 element(by.xpath('//ul[@class="in-page-navigation__list in-page-navigation--padding-normal"]//a'))), 3000);     
-                const menuList = await element.all(by.xpath('//div[@class = "field-content"]/a[@hreflang]'));
-                expect( await menuList[0].getText()).toBe("PAM Named a Leader in NelsonHall's 2020 NEAT Vendor Evaluation Process for Overall Quality Engineering Services");
-                expect( await menuList[1].getText()).toBe("PAM Announces Date for Third Quarter 2020 Earnings Release and Conference Call");
+                const menuList = await element.all(by.xpath('//ul[@class="in-page-navigation__list in-page-navigation--padding-normal"]//a'));
+                await menuList[0].click();
+                expect( await browser.getCurrentUrl() === 'https://investors.epam.com/investors/stock-price');
             }
             catch(e){
                 console.error('Error: ', e);
             }
         }
 
-        checkNewsOnInvestorsPage();
 
     })
-    
-    it('Check the web-site search', function(){
 
+    it('3.	To check the news order in the News section', function(){
+
+        
+    browser.waitForAngularEnabled(false);
+    browser.driver.manage().window().maximize();
+    browser.get('https://www.epam.com/');
+
+    const sleep = ms => {
+         return new Promise(resolve => {setTimeout(() => resolve(), ms)})
+    }
+        async function checkNewsOnInvestorsPage(){
+            
+            var EC = protractor.ExpectedConditions;
+            
+            try{
+                await sleep(3000);
+                const investorsButton = await element(by.xpath('//li[@class="footer__links-container item--piped"]/a[text() ="Investors"]'));
+                await investorsButton.click();
+                expect( await browser.getCurrentUrl() === 'https://investors.epam.com/investors');
+                await browser.wait(EC.presenceOf(
+                element(by.xpath('//ul[@class="in-page-navigation__list in-page-navigation--padding-normal"]//a'))), 3000);     
+                const newsList = await element.all(by.xpath('//div[@class = "field-content"]/a[@hreflang]'));
+                expect( await newsList[0].getText()).toBe("PAM Named a Leader in NelsonHall's 2020 NEAT Vendor Evaluation Process for Overall Quality Engineering Services");
+                expect( await newsList[1].getText()).toBe("PAM Announces Date for Third Quarter 2020 Earnings Release and Conference Call");
+            }
+            catch(e){
+                console.error('Error: ', e);
+            }
+        }
+
+    })
+
+    it('4.	To check the Epam management buttons presence', function(){
+                
+    browser.waitForAngularEnabled(false);
+    browser.driver.manage().window().maximize();
+    browser.get('https://www.epam.com/');
+
+    const sleep = ms => {
+         return new Promise(resolve => {setTimeout(() => resolve(), ms)})
+    }
+        async function checkEpamManagementButton(){
+                    
+            try{
+                await sleep(3000);
+                const investorsButton = await element(by.xpath('//li[@class="footer__links-container item--piped"]/a[text() ="Investors"]'));
+                await investorsButton.click();
+                expect( await browser.getCurrentUrl() === 'https://investors.epam.com/investors');
+                await browser.manage().timeouts().implicitlyWait(3000);
+                const managementButtonList = await element.all(by.xpath('//a[@class="president__link"]'));
+                expect( await managementButtonList[0].getText()).toBe("Board of Directors");
+                expect( await managementButtonList[1].getText()).toBe("Executive Management");
+            }
+            catch(e){
+                console.error('Error: ', e);
+            }
+        }
+
+    })
+
+    it('5. To check  the Board of Directors button', function(){
         browser.waitForAngularEnabled(false);
         browser.driver.manage().window().maximize();
         browser.get('https://www.epam.com/');
-
+    
         const sleep = ms => {
-            return new Promise(resolve => {setTimeout(() => resolve(), ms)});
+             return new Promise(resolve => {setTimeout(() => resolve(), ms)})
         }
-            async function checkTheWebSiteSearch(){
-
+            async function checkNewsOnInvestorsPage(){
+                
                 var EC = protractor.ExpectedConditions;
-
+                
                 try{
                     await sleep(3000);
-                    const searchButton = await element(by.xpath('//button[@class = "header-search__button header__icon"]'));
-                    await searchButton.click();
-                    const searchField = await element(by.xpath('//input[@id = "new_form_search"]'));
-                    await browser.manage().timeouts().implicitlyWait(3000);
-                    await searchField.sendKeys('Investors');
-                    await searchField.submit();
-                    // const findButton = await element(by.xpath('header-search__submit'));
-                    // await findButton.click();
-                    await browser.manage().timeouts().implicitlyWait(3000);
-                    // expect( await browser.getCurrentUrl() === 'https://www.epam.com/search?q=investiors');
-
-                    const searchResultTitlesList = await element.all(by.xpath('//a[@class = "search-results__title-link"]'));
-                    const searchResultParagraphsList = await element.all(by.xpath('//p[@class = "search-results__description"]'));
-                    await searchResultTitlesList.forEach((item) => { return expect(item.getText()).toContain('Investor')})
-                    // await searchResultParagraphsList.forEach(item => { return expect(item.getText()).toContain('Investors')})
-                    
+                    const investorsButton = await element(by.xpath('//li[@class="footer__links-container item--piped"]/a[text() ="Investors"]'));
+                    await investorsButton.click();
+                    expect( await browser.getCurrentUrl() === 'https://investors.epam.com/investors');
+                    await browser.wait(EC.presenceOf(
+                    element(by.xpath('//ul[@class="in-page-navigation__list in-page-navigation--padding-normal"]//a'))), 3000);     
+                    const managementButtonList = await element.all(by.xpath('//a[@class="president__link"]'));
+                    expect( await managementButtonList[0].getText()).toBe("Board of Directors");
+                    await managementButtonList[0].click();
+                    expect( await browser.getCurrentUrl() === 'https://investors.epam.com/investors/leadership-and-governance#directors');
                 }
-                
                 catch(e){
                     console.error('Error: ', e);
                 }
             }
-
-            checkTheWebSiteSearch();
-    });
-
+    })
 
     });
 

@@ -13,6 +13,10 @@ exports.config = {
   // Spec patterns are relative to the current working directory when
   // protractor is called.
   specs: ['C:/Users/1/Desktop/EPAM_JS/Kandziuba_EPAM_ProractorFramework/spec/contactFormTests.js'],
+  
+      suites: {
+        smoke: '../spec/*.js'
+      },
 
   // Options to be passed to Jasmine.
   jasmineNodeOpts: {

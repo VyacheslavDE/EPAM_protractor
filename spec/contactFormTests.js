@@ -43,16 +43,6 @@ describe('EPAM "Contac us" form demo test', function(){
                         await emailField.sendKeys("vasya_pupkin@gmail.com");
                         const phoneField = await element(by.xpath("//input[@placeholder='Phone*']"));
                         await phoneField.sendKeys("+380988888888");
-
-                        // await browser.wait(EC.elementToBeClickable(element(by.xpath("(//span[@class='select2-selection__rendered'])[6]"))), 10000);
-                        // const howDidYouHearDropdown = await element(by.xpath("(//span[@class='select2-selection__rendered'])[6]"));
-                        // await howDidYouHearDropdown.click(); 
-
-                        // const eventOption = await element(by.xpath("//li[contains(text(),'Event')]"));
-                        // await eventOption.click();
-                        // const consentCheckbox = await element(by.xpath("//label[@for='new_form_gdprConsent']")); 
-                        // await browser.wait(EC.elementToBeClickable(consentCheckbox), 5000);
-                        // await consentCheckbox.click();
                         await browser.wait(EC.elementToBeClickable(by.xpath("//button[@type = 'submit']")), 5000);
                         const submitButton = await element(by.xpath("//button[@type = 'submit']"));
                         await submitButton.click();
